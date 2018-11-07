@@ -35,53 +35,53 @@ body = document.querySelector('body')
 
 
 var header = document.createElement("header")
-header.setAttribute("id", "main-header")
-header.setAttribute("class", "bg-success text-white p-4 mb-3")
+header.id = "main-header"
+header.className = "bg-success text-white p-4 mb-3"
 document.getElementsByTagName('body')[0].appendChild(header)
 
 var div = document.createElement("div")
-div.setAttribute("class", "container")
+div.className = "container"
 document.getElementsByTagName('header')[0].appendChild(div)
 
 var h1 = document.createElement("h1")
-h1.setAttribute("id", "header-title")
+h1.id = "header-title"
 h1.innerText = "Item Lister"
 document.getElementsByClassName('container')[0].appendChild(h1)
 
 var span = document.createElement("span")
-span.setAttribute("style", "display:none")
+span.style =  "display:none"
 span.innerText = "123"
 h1.appendChild(span)
 
 // body-header is finished
 
 var div = document.createElement("div")
-div.setAttribute("class", "container")
+div.className =  "container"
 body.appendChild(div)
 
 var div = document.createElement("div")
-div.setAttribute("id", "main")
-div.setAttribute("class", "card card-body")
+div.id = "main"
+div.className = "card card-body"
 document.getElementsByClassName("container")[1].appendChild(div)
 
 var h2 = document.createElement("h2")
-h2.setAttribute("class", "title")
+h2.className =  "title"
 h2.innerText = "Add Items"
 document.getElementsByClassName('card card-body')[0].appendChild(h2)
 
 var form = document.createElement("form")
-form.setAttribute("class", "form-inline mb-3")
+form.className =  "form-inline mb-3"
 document.getElementsByClassName('card card-body')[0].appendChild(form)
 
 var input = document.createElement("input")
-input.setAttribute("type", "text")
-input.setAttribute("class", "form-control mr-2")
+input.type = "text"
+input.className = "form-control mr-2"
 document.getElementsByClassName('form-inline mb-3')[0].appendChild(input)
 
 var input = document.createElement("input")
-input.setAttribute("type", "submit")
-input.setAttribute("class", "btn btn-dark")
-input.setAttribute("value", "Submit")
+input.type = "submit"
+input.className = "btn btn-dark"
+input.value = "Submit"
 document.getElementsByClassName('form-inline mb-3')[0].appendChild(input)
 
 
@@ -89,36 +89,127 @@ document.getElementsByClassName('form-inline mb-3')[0].appendChild(input)
 
 
 var h2 = document.createElement("h2")
-h2.setAttribute("class", "title")
+h2.className =  "title"
 h2.innerText= "Items"
 document.getElementsByClassName("card card-body")[0].appendChild(h2)
 
-var ul = document.createElement("ul")
-ul.setAttribute("id", "items")
-ul.setAttribute("class", "list-group")
-document.getElementsByClassName("card card-body")[0].appendChild(ul)
+var div = document.createElement("div")
+div.className = "input-group-prepend"
 
-for(var i=0; i<=7; i++){
+
+var ul = document.createElement("ul")
+ul.id = "items"
+ul.className = "list-group" 
+document.getElementsByClassName("card card-body")[0].appendChild(ul)
+// document.getElementsByClassName("input-group-prepend")[0].appendChild(ul)
+
+
+
+for(var i=0; i<=2; i++){
     var li = document.createElement("li")
     li.setAttribute("class", "list-group-item")
     if(i%2===0) {
         li.style.backgroundColor = "#f4f4f4"}
     else{
         li.style.backgroundColor = "#ccc"}
-    li.innerText = "item"+ String(i+1)
+    li.innerText = "row"+ String(i+1)
     document.getElementsByClassName("list-group")[0].appendChild(li)
 }
 
 var li = document.querySelectorAll("li")
-console.log(li)
+// console.log(li)
 var odd = document.querySelectorAll('li:nth-child(odd)');
 var even = document.querySelectorAll('li:nth-child(even)');
 console.log("Odd",  odd)
 console.log("Even", even)
+// console.log(body)
 
-for(var i=0; i=odd.length; i++) {
-    odd[i].style.backgroundColor = "#f4f4f4";
-    even[i].style.backgroundColor = "#ccc";
+
+// Video 3, add EventListener
+// first make a button on the end of the list items,
+
+var buttonPlus = document.createElement("button")
+buttonPlus.id = "button+"
+buttonPlus.className = "btn btn-outline-success btn-block"
+buttonPlus.innerText = " + "
+buttonPlus.type = "button"
+buttonPlus.onclick = "return falase"
+
+var buttonMinus = document.createElement("button")
+buttonMinus.className = "btn btn-outline-danger btn-block"
+buttonMinus.id = "button-"
+buttonMinus.innerText = " - "
+buttonMinus.type = "button"
+buttonMinus.onclick = "return falase"
+
+var button_place = document.getElementsByClassName("card card-body")[0]
+// console.log(button_place)
+button_place.appendChild(buttonPlus)
+button_place.appendChild(buttonMinus)
+
+
+// // Method 1 to add event-listener, get element by ID and add function
+// var button = document.getElementById("button").addEventListener(
+//     'click', function(e){
+//         console.log("I clicked")
+//     }
+// )
+
+// Method 2 , seperate the function from the eventListener
+document.getElementById("button+").addEventListener('click', addRows);
+document.getElementById("button-").addEventListener('click', deleteRows);
+
+function addRows() {
+    row = document.getElementsByClassName("list-group-item")
+    var li = document.createElement("li")
+    li.className = "list-group-item"
+    li.innerText = "row "+String(row.length+1)
+    if([row.length+1]%2===0) {
+        li.style.backgroundColor = "#ccc"}
+    else{
+        li.style.backgroundColor = "#f4f4f4"}
+    row[0].parentNode.appendChild(li)
+    console.log("++ -->: " + String(row.length))
+    }
+        
+function deleteRows() {
+    row = document.querySelectorAll(".list-group-item")
+    parent = row[0].parentNode
+    value = row[row.length-1]
+    if((row.length-1) >=1){
+        parent.removeChild(value)
+        console.log("-- -->: " + String(row.length))
+    }
+    else {console.log("Cannot remove the last child")}
+    // console.log(row[0].parentNode.removeChild[])
+}
+
+
+
+// Print function
+printButton = document.createElement("button")
+printButton.id = "print"
+printButton.type = "button"
+printButton.innerText = "Print the Form"
+printButton.className = "btn btn-warning btn-block"
+
+document.getElementsByClassName("card card-body")[0].appendChild(printButton)
+// container = document.querySelector(".")
+// container.appendChild(printButton)
+
+var printbtn = document.getElementById("print")
+printbtn.addEventListener("click", printer)
+
+function printer() {
+    // console.log("here I am ")
+    var pdf = new jsPDF('p', 'cm');
+    pdf.setFont('courier')
+    pdf.setFontStyle('normal')
+    console.log(document.querySelectorAll(".list-group")[0])
+    pdf.setFont("times", "italic")
+    console.log(pdf.getWidth)
+    // pdf.autoPrint({variant: 'non-conform'})
+    console.log("#Page: " + pdf.internal.getNumberOfPages())
+    // pdf.save('yohoooooo.pdf')
 
 }
-console.log(body)
