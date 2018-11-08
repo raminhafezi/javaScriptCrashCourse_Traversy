@@ -169,7 +169,7 @@ function addRows() {
     else{
         li.style.backgroundColor = "#f4f4f4"}
     row[0].parentNode.appendChild(li)
-    console.log("++ -->: " + String(row.length))
+    console.log("+ : Row " + String(row.length))
     }
         
 function deleteRows() {
@@ -178,7 +178,7 @@ function deleteRows() {
     value = row[row.length-1]
     if((row.length-1) >=1){
         parent.removeChild(value)
-        console.log("-- -->: " + String(row.length))
+        console.log("- : Row " + String(row.length))
     }
     else {console.log("Cannot remove the last child")}
     // console.log(row[0].parentNode.removeChild[])
