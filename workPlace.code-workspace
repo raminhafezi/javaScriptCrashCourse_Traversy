@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"path": "javascript_crash_course"
+		},
+		{
+			"path": "practive_js_DOM"
+		}
+	],
+	"settings": {
+		"liveServer.settings.multiRootWorkspaceName": "javascript_crash_course"
+	}
+}
