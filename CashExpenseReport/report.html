@@ -3,10 +3,6 @@
     <head>
         <meta charset="utf-8">
         <meta name="viewport" content="width=device-width, initial-scale=1">
-        <script src="report.js"> </script>
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
-        <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
-
     </head>
     <body>
         <section class="section has-background-link" id="top-banner">
@@ -15,25 +11,59 @@
                 <p class="subtitle has-text-right has-text-white is-italic ">Bio and Gene Pty Ltd </p>
             </div>
         </section>
-        <section class="section has-background-warning" id="notification">
-            <table class="table is-striped">
-                <thead>
-                    <tr>
-                        <th>help 1</th>
-                    </tr>
-                    <tr>
-                        <th>help 1</th>
-                    </tr>
-                    <tr>
-                        <th>help 1</th>
-                    </tr>
-                    <tr>
-                        <th>help 1</th>
-                    </tr>
-                </thead>
-            </table>
-          
-        </section>
+        <div class="field is-vartical">
+            <div class="label is-vertical has-background-warning">
+                <label class="label is-capitalized"> Section 1: Employee Details</label>
+            </div>  
+        <div class="field" id="fullNameField">
+                <p class="control has-icons-left has-icons-right">
+                    <input class="input" type="text" id="fullNameInputBox" placeholder="Ful Name">
+                    <span class="icon has-text-success" > 
+                        <i class="fas fa-exclamation-triangle has-text-danger" id="exclamation-icon"></i> <!-- change to "icon has-text-success" after user input the name-->
+                    </span>
+                    <span class="icon is-small is-right">
+                        <i class="fas fa-check has-text-danger" id="fullNameCheck-icon"></i> <!-- change to "icon has-text-success" after user input the name-->
+                    </span>
+                </p>
+        </div>
 
-    </body>
+        <div class="field">
+                <p class="control has-icons-left has-icons-right">
+                  <input class="input" id = "email" type="email" placeholder="Email">
+                  <span class="icon is-small is-left">
+                    <i class="fas fa-envelope has-text-danger"></i>
+                  </span>
+                  <span class="icon is-small is-right">
+                    <i class="fas fa-check has-text-danger"></i> <!-- change to "icon has-text-success" after user input the name-->
+                  </span>
+                </p>
+              </div>
+
+
+    
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.2/css/bulma.min.css">
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script type="text/javascript" src="report.js"> </script>
+</body>
 </html>
+
+<!----
+              <section class="section has-background-warning" id="notification">
+                        <table class="table is-striped">
+                            <thead>
+                                <tr>
+                                    <th>help 1</th>
+                                </tr>
+                                <tr>
+                                    <th>help 1</th>
+                                </tr>
+                                <tr>
+                                    <th>help 1</th>
+                                </tr>
+                                <tr>
+                                    <th>help 1</th>
+                                </tr>
+                            </thead>
+                        </table>
+                 </section>
+-->
