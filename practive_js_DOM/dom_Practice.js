@@ -33,55 +33,54 @@ head = document.querySelector('head')
 
 body = document.querySelector('body')
 
-
 var header = document.createElement("header")
-header.setAttribute("id", "main-header")
-header.setAttribute("class", "bg-success text-white p-4 mb-3")
+header.id = "main-header"
+header.className = "bg-success text-white p-4 mb-3"
 document.getElementsByTagName('body')[0].appendChild(header)
 
 var div = document.createElement("div")
-div.setAttribute("class", "container")
+div.className = "container"
 document.getElementsByTagName('header')[0].appendChild(div)
 
 var h1 = document.createElement("h1")
-h1.setAttribute("id", "header-title")
+h1.id = "header-title"
 h1.innerText = "Item Lister"
 document.getElementsByClassName('container')[0].appendChild(h1)
 
 var span = document.createElement("span")
-span.setAttribute("style", "display:none")
+span.style = "display:none"
 span.innerText = "123"
 h1.appendChild(span)
 
 // body-header is finished
 
 var div = document.createElement("div")
-div.setAttribute("class", "container")
+div.className = "container"
 body.appendChild(div)
 
 var div = document.createElement("div")
-div.setAttribute("id", "main")
-div.setAttribute("class", "card card-body")
+div.id = "main"
+div.className = "card card-body"
 document.getElementsByClassName("container")[1].appendChild(div)
 
 var h2 = document.createElement("h2")
-h2.setAttribute("class", "title")
+h2.className = "title"
 h2.innerText = "Add Items"
 document.getElementsByClassName('card card-body')[0].appendChild(h2)
 
 var form = document.createElement("form")
-form.setAttribute("class", "form-inline mb-3")
+form.className = "form-inline mb-3"
 document.getElementsByClassName('card card-body')[0].appendChild(form)
 
 var input = document.createElement("input")
 input.setAttribute("type", "text")
-input.setAttribute("class", "form-control mr-2")
+input.className = "form-control mr-2"
 document.getElementsByClassName('form-inline mb-3')[0].appendChild(input)
 
 var input = document.createElement("input")
-input.setAttribute("type", "submit")
-input.setAttribute("class", "btn btn-dark")
-input.setAttribute("value", "Submit")
+input.type = "submit"
+input.className = "btn btn-dark"
+input.value = "Submit"
 document.getElementsByClassName('form-inline mb-3')[0].appendChild(input)
 
 
@@ -89,18 +88,18 @@ document.getElementsByClassName('form-inline mb-3')[0].appendChild(input)
 
 
 var h2 = document.createElement("h2")
-h2.setAttribute("class", "title")
+h2.className = "title"
 h2.innerText= "Items"
 document.getElementsByClassName("card card-body")[0].appendChild(h2)
 
 var ul = document.createElement("ul")
-ul.setAttribute("id", "items")
-ul.setAttribute("class", "list-group")
+ul.id = "items"
+ul.className = "list-group"
 document.getElementsByClassName("card card-body")[0].appendChild(ul)
 
 for(var i=0; i<=7; i++){
     var li = document.createElement("li")
-    li.setAttribute("class", "list-group-item")
+    li.className = "list-group-item"
     if(i%2===0) {
         li.style.backgroundColor = "#f4f4f4"}
     else{
@@ -110,15 +109,41 @@ for(var i=0; i<=7; i++){
 }
 
 var li = document.querySelectorAll("li")
-console.log(li)
+// console.log(li)
 var odd = document.querySelectorAll('li:nth-child(odd)');
 var even = document.querySelectorAll('li:nth-child(even)');
-console.log("Odd",  odd)
-console.log("Even", even)
+// console.log("Odd",  odd)
+// console.log("Even", even)
 
-for(var i=0; i=odd.length; i++) {
-    odd[i].style.backgroundColor = "#f4f4f4";
-    even[i].style.backgroundColor = "#ccc";
+// console.log(body)
 
-}
-console.log(body)
+var itemList = document.querySelector('#items');
+
+// ParentNode
+// console.log(itemList.parentNode);
+// itemList.parentNode.style.backgroundColor = 'pink'
+
+// we can also used parentElement. basically is the same as parentNode
+
+// console.log(itemList.childNodes)
+// console.log(itemList.children);
+// itemList.children[3].style.backgroundColor = "green";
+
+// First Element child is better than first child
+// console.log(itemList.firstElementChild)
+// itemList.firstElementChild.textContent = "First Element Child"
+
+var span = document.createElement('span')
+// span.setAttribute("id", "span")
+// span.setAttribute("class", "span_class")
+
+// ul = document.getElementsByClassName("list-group")[0]
+//console.log(ul)
+//ul.parentNode.appendChild(span)
+
+// ul.appendChild(span)
+// console.log(ul.nextElementSibling)
+
+console
+
+
