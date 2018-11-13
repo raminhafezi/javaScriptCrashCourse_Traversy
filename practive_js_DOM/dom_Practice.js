@@ -48,14 +48,22 @@ h1.innerText = "Item Lister"
 document.getElementsByClassName('container')[0].appendChild(h1)
 
 var span = document.createElement("span")
+<<<<<<< HEAD
 span.style = "display:none"
+=======
+span.style =  "display:none"
+>>>>>>> c0c7e9fdb47a0f73c3973c8e50d6f7e84442f36f
 span.innerText = "123"
 h1.appendChild(span)
 
 // body-header is finished
 
 var div = document.createElement("div")
+<<<<<<< HEAD
 div.className = "container"
+=======
+div.className =  "container"
+>>>>>>> c0c7e9fdb47a0f73c3973c8e50d6f7e84442f36f
 body.appendChild(div)
 
 var div = document.createElement("div")
@@ -64,16 +72,28 @@ div.className = "card card-body"
 document.getElementsByClassName("container")[1].appendChild(div)
 
 var h2 = document.createElement("h2")
+<<<<<<< HEAD
 h2.className = "title"
+=======
+h2.className =  "title"
+>>>>>>> c0c7e9fdb47a0f73c3973c8e50d6f7e84442f36f
 h2.innerText = "Add Items"
 document.getElementsByClassName('card card-body')[0].appendChild(h2)
 
 var form = document.createElement("form")
+<<<<<<< HEAD
 form.className = "form-inline mb-3"
 document.getElementsByClassName('card card-body')[0].appendChild(form)
 
 var input = document.createElement("input")
 input.setAttribute("type", "text")
+=======
+form.className =  "form-inline mb-3"
+document.getElementsByClassName('card card-body')[0].appendChild(form)
+
+var input = document.createElement("input")
+input.type = "text"
+>>>>>>> c0c7e9fdb47a0f73c3973c8e50d6f7e84442f36f
 input.className = "form-control mr-2"
 document.getElementsByClassName('form-inline mb-3')[0].appendChild(input)
 
@@ -88,23 +108,38 @@ document.getElementsByClassName('form-inline mb-3')[0].appendChild(input)
 
 
 var h2 = document.createElement("h2")
+<<<<<<< HEAD
 h2.className = "title"
+=======
+h2.className =  "title"
+>>>>>>> c0c7e9fdb47a0f73c3973c8e50d6f7e84442f36f
 h2.innerText= "Items"
 document.getElementsByClassName("card card-body")[0].appendChild(h2)
 
+var div = document.createElement("div")
+div.className = "input-group-prepend"
+
+
 var ul = document.createElement("ul")
 ul.id = "items"
+<<<<<<< HEAD
 ul.className = "list-group"
+=======
+ul.className = "list-group" 
+>>>>>>> c0c7e9fdb47a0f73c3973c8e50d6f7e84442f36f
 document.getElementsByClassName("card card-body")[0].appendChild(ul)
+// document.getElementsByClassName("input-group-prepend")[0].appendChild(ul)
 
-for(var i=0; i<=7; i++){
+
+
+for(var i=0; i<=2; i++){
     var li = document.createElement("li")
     li.className = "list-group-item"
     if(i%2===0) {
         li.style.backgroundColor = "#f4f4f4"}
     else{
         li.style.backgroundColor = "#ccc"}
-    li.innerText = "item"+ String(i+1)
+    li.innerText = "row"+ String(i+1)
     document.getElementsByClassName("list-group")[0].appendChild(li)
 }
 
@@ -112,6 +147,7 @@ var li = document.querySelectorAll("li")
 // console.log(li)
 var odd = document.querySelectorAll('li:nth-child(odd)');
 var even = document.querySelectorAll('li:nth-child(even)');
+<<<<<<< HEAD
 // console.log("Odd",  odd)
 // console.log("Even", even)
 
@@ -147,3 +183,98 @@ var span = document.createElement('span')
 console
 
 
+=======
+console.log("Odd",  odd)
+console.log("Even", even)
+// console.log(body)
+
+
+// Video 3, add EventListener
+// first make a button on the end of the list items,
+
+var buttonPlus = document.createElement("button")
+buttonPlus.id = "button+"
+buttonPlus.className = "btn btn-outline-success btn-block"
+buttonPlus.innerText = " + "
+buttonPlus.type = "button"
+buttonPlus.onclick = "return falase"
+
+var buttonMinus = document.createElement("button")
+buttonMinus.className = "btn btn-outline-danger btn-block"
+buttonMinus.id = "button-"
+buttonMinus.innerText = " - "
+buttonMinus.type = "button"
+buttonMinus.onclick = "return falase"
+
+var button_place = document.getElementsByClassName("card card-body")[0]
+// console.log(button_place)
+button_place.appendChild(buttonPlus)
+button_place.appendChild(buttonMinus)
+
+
+// // Method 1 to add event-listener, get element by ID and add function
+// var button = document.getElementById("button").addEventListener(
+//     'click', function(e){
+//         console.log("I clicked")
+//     }
+// )
+
+// Method 2 , seperate the function from the eventListener
+document.getElementById("button+").addEventListener('click', addRows);
+document.getElementById("button-").addEventListener('click', deleteRows);
+
+function addRows() {
+    row = document.getElementsByClassName("list-group-item")
+    var li = document.createElement("li")
+    li.className = "list-group-item"
+    li.innerText = "row "+String(row.length+1)
+    if([row.length+1]%2===0) {
+        li.style.backgroundColor = "#ccc"}
+    else{
+        li.style.backgroundColor = "#f4f4f4"}
+    row[0].parentNode.appendChild(li)
+    console.log("+ : Row " + String(row.length))
+    }
+        
+function deleteRows() {
+    row = document.querySelectorAll(".list-group-item")
+    parent = row[0].parentNode
+    value = row[row.length-1]
+    if((row.length-1) >=1){
+        parent.removeChild(value)
+        console.log("- : Row " + String(row.length))
+    }
+    else {console.log("Cannot remove the last child")}
+    // console.log(row[0].parentNode.removeChild[])
+}
+
+
+
+// Print function
+printButton = document.createElement("button")
+printButton.id = "print"
+printButton.type = "button"
+printButton.innerText = "Print the Form"
+printButton.className = "btn btn-warning btn-block"
+
+document.getElementsByClassName("card card-body")[0].appendChild(printButton)
+// container = document.querySelector(".")
+// container.appendChild(printButton)
+
+var printbtn = document.getElementById("print")
+printbtn.addEventListener("click", printer)
+
+function printer() {
+    // console.log("here I am ")
+    var pdf = new jsPDF('p', 'cm');
+    pdf.setFont('courier')
+    pdf.setFontStyle('normal')
+    console.log(document.querySelectorAll(".list-group")[0])
+    pdf.setFont("times", "italic")
+    console.log(pdf.getWidth)
+    // pdf.autoPrint({variant: 'non-conform'})
+    console.log("#Page: " + pdf.internal.getNumberOfPages())
+    // pdf.save('yohoooooo.pdf')
+
+}
+>>>>>>> c0c7e9fdb47a0f73c3973c8e50d6f7e84442f36f
