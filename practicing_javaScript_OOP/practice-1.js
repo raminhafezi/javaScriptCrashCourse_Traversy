@@ -48,32 +48,37 @@
 // console.log(book1.publisher)
 
 
-// 3- Inheritance
-// we want to create another Object named Magazine that inheritance methods and properties from Book
-// -----------------------------------------------------
+// // 3- Inheritance
+// // we want to create another Object named Magazine that inheritance methods and properties from Book
+// // -----------------------------------------------------
 
-function Book(title, author, year) {
-    this.title = title;
-    this.author = author;
-    this.year = year;}
+// function Book(title, author, year) {
+//     this.title = title;
+//     this.author = author;
+//     this.year = year;}
 
-Book.prototype.getSummary = function(){
-           return `Book named "${this.title}" was written by "${this.author}" in "${this.year}"`;}
+// Book.prototype.getSummary = function(){
+//            return `Book named "${this.title}" was written by "${this.author}" in "${this.year}"`;}
 
-function Magazine(title, author, year, month) {
-    Book.call(this, title, author, year);
+// function Magazine(title, author, year, month) {
+//     Book.call(this, title, author, year);
 
-    this.month = month
-}
+//     this.month = month
+// }
 
-// instantiate magazine object
-// in order to inherite the fucntion of the Object
-// this line must be placed before the instantiation of the Object.
-Magazine.prototype = Object.create(Book.prototype)
+// // instantiate magazine object
+// // in order to inherite the fucntion of the Object
+// // this line must be placed before the instantiation of the Object.
+// Magazine.prototype = Object.create(Book.prototype)
 
-const mag1 = new Magazine("Mag one", "J.Fla", "2015", "November");
-console.log(mag1)
-// console.log(mag1.getSummary()) // Return an error
+// const mag1 = new Magazine("Mag one", "J.Fla", "2015", "November");
+// console.log(mag1)
+// // console.log(mag1.getSummary()) // Return an error
 
 
-console.log(mag1.getSummary())
+// console.log(mag1.getSummary())
+
+
+// // 4- Object Create
+// // 
+// // -----------------------------------------------------
