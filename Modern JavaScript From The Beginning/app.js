@@ -208,56 +208,191 @@
 // // using template is much better we can use function and if statement ,,,,, in the ${}
 
 
-// ================================= Array & array Methods ======================
-//  two ways to decalre array
-// 1)
-const numbers = [1, 2, 3, 4, 5, 8, 90, "qwdf", new Date()];
+// // ================================= Array & array Methods ======================
+// //  two ways to decalre array
+// // 1)
+// const numbers = [1, 2, 3, 4, 5, 8, 90, "qwdf", new Date()];
 
-// 2)
-const number = new Array(1, 23, 5, 78, 9, "string", true, "sample".length)
+// // 2)
+// const number = new Array(1, 23, 5, 78, 9, "string", true, "sample".length)
 
-console.log(number)
-console.log(numbers)
+// console.log(number)
+// console.log(numbers)
 
 
-// check if something is array
-console.log(Array.isArray(numbers))
+// // check if something is array
+// console.log(Array.isArray(numbers))
 
-// find the index of the array
-console.log(numbers.indexOf(8))
+// // find the index of the array
+// console.log(numbers.indexOf(8))
 
-// Add to array end
-number.push(12)
+// // Add to array end
+// number.push(12)
 
-// add to the front
-number.unshift("Ramin")
+// // add to the front
+// number.unshift("Ramin")
 
-console.log(number)
+// console.log(number)
     
-// pop from end
-console.log(number.pop())
+// // pop from end
+// console.log(number.pop())
 
-// pop from front
-console.log(number.shift())
-
-
-console.log(number.sort()) // [1, 23, 5, 6, 78, 9, "string", true]
-                            // which is wrong, just sort the first number, not all of the array
-                            // https://www.geeksforgeeks.org/javascript-array-sort/
-
-//  how to sort entire array ----DES
-val = number.sort(function (x, y) {
-    return x - y;
-})
-
-//  how to sort entire array ---- ASC
-val = number.sort(function (x, y) {
-    return y-x;
-})
+// // pop from front
+// console.log(number.shift())
 
 
+// console.log(number.sort()) // [1, 23, 5, 6, 78, 9, "string", true]
+//                             // which is wrong, just sort the first number, not all of the array
+//                             // https://www.geeksforgeeks.org/javascript-array-sort/
 
-console.log(val)
+// //  how to sort entire array ----DES
+// val = number.sort(function (x, y) {
+//     return x - y;
+// })
+
+// //  how to sort entire array ---- ASC
+// val = number.sort(function (x, y) {
+//     return y-x;
+// })
 
 
 
+// console.log(val)
+
+
+// // // ============================== Object Literals
+
+
+// const person = {
+//     firstName : "Bio",
+//     lastName : "Gene",
+//     age : 5,
+//     email : "info@bioandgene.com",
+//     hobbies : ["Project Manager", "Pharmacvigilance", "Smart Farm", "Bio tech"],
+//     address : {
+//         number : "Unit 10.01, 8",
+//         street: "West st",
+//         city: "North Sydney",
+//         postCode: "2060",
+//         country : "AU"
+//     },
+//     getBirthYear: function (){
+//         var date = new Date()
+//         return date.getFullYear() - this.age;
+//         }
+// }        
+// console.log(person.getBirthYear())
+
+
+
+// // // ================================ Dates and Times =============
+// const today = new Date()
+
+// val = today.getFullYear()
+// val = today.getDay()
+// val = today.getHours()
+// val = today.getTime()
+// val = today.getSeconds()
+// console.log(val)
+
+// /// ============== If Statements & Comparison Operation =========
+
+// const id = 100;
+// if (id == 99) {
+//     console.log("correct")
+// } else {
+//     console.log("incorrect")
+// }
+
+
+// if (id != 99) {
+//     console.log("correct")
+// } else {
+//     console.log("incorrect")
+// }
+
+// var id2 = "100"
+// if (id2 == 100) { // compare value
+//     console.log("correct")
+// } else {
+//     console.log("incorrect")
+// } // return correct
+
+// var id2 = "100"
+// if (id2 === 100) { // compare type and value
+//     console.log("correct")
+// } else {
+//     console.log("incorrect")
+// } // return incorrect
+
+// ========
+// if (id) {
+//     console.log(`The id is ${id}`)
+// } else {
+//     console.log("NO ID")
+// } // return error because id is not defined, unless we defined id first like [let id = "1000"]
+
+// wa want to check if id is defined and then go to if statement
+//  test if undefiend
+// if (typeof id !== "undefined") {
+//     console.log(`The id is ${id}`)
+// } else {
+//     console.log("NO ID")
+// } // return error because id is not defined
+
+
+//  /// TERNARY OPERATOR
+
+// const id = 1
+// console.log(id === 1 ? "CORRECT" : "INCORRECT")
+
+
+// // // ======================================= FUNCTIONS DECLARATIONS AND EXPRESSION ==================
+
+// function greet(firstName = "John", lastName = "Smith"){
+//     return "Hello" + " " + firstName + " " + lastName
+// }
+
+// console.log(greet()) // return Hello John Smith
+// console.log(greet("Bio", "Gene")) // return Hello Bio Gene
+
+
+// // // FUNCTION EXPRESSION
+// // // usually means to assing the function to a variable or const
+
+// const square = function (x = 3) {
+//     return x * x;
+// };
+
+// console.log(square()) //return 9
+// console.log(square(5)) // return 25
+
+
+//     // // =================IMEMDIATLY INVOICABLE FUNCTION EXPRESSION -- IIFEs=============
+// (function (){
+//     console.log("IIFEs RUN. .....")
+// })(); // we need () at the end to atc as a method/ to run funciton immediatly
+    
+
+// (function (name) {
+//     console.log(`My name is ${name}`)
+// })(); // return 'My name is undefined'
+
+
+// (function (name) {
+//     console.log(`My name is ${name}`)
+// })('Ramin'); // return 'My name is Ramin'
+    
+// // =========== PROPERTY  METHOD
+
+const todo  = {
+    add : function () {
+        console.log("todo add....")
+    },
+    edit: function (id) {
+        console.log(`todo edit ${id}`)
+    }
+}
+
+todo.add()
+todo.edit(33)
