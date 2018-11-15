@@ -27,3 +27,4 @@ console.log(newObject.firstMethod())
 console.log(newObject.thirdMethod())
 console.log(new_newObject.secondMethod())
 console.log(new_newObject.forthMethod())
+
