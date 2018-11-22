@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import './App.css';
+import cssClasses from './App.css';
 import Person from "./Person/Person.js"
 
 
@@ -74,23 +74,18 @@ class App extends Component {
     }
 
     const classes = [];
-    switch(this.state.persons.length) {
-      case 2:
-        classes.push('red'); //classes = ['red']
-        break;
-      case 1:
-        classes.push('red bold'); //classes = ['red', 'bold']
-        break;
-      case 0:
-        classes.push('red bold underline'); //classes = ['red', 'bold', 'underline']
-        break;
-      default:
-        break;
+    if (this.state.persons.length <=2) {
+      classes.push(cssClasses.red); // classes = ['red']
     }
-    
+    if (this.state.persons.length <=1) {
+      classes.push(cssClasses.bold); // classes = ['red', 'bold']
+    }
+    if (this.state.persons.length <=0) {
+      classes.push(cssClasses.underline); // classes = ['red', 'bold', 'underline']
+    }  
 
     return (
-      <div className="App">
+      <div className={cssClasses.App}>
         <p className = {classes.join(' ')}>This is working!</p>
         <button 
           style = {style}
