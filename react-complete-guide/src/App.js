@@ -73,20 +73,20 @@ class App extends Component {
       style.backgroundColor = "#007bff";
     }
 
-    const classes = [];
+    const assignClasses = [];
     if (this.state.persons.length <=2) {
-      classes.push(cssClasses.red); // classes = ['red']
+      assignClasses.push(cssClasses.red); // classes = ['red']
     }
     if (this.state.persons.length <=1) {
-      classes.push(cssClasses.bold); // classes = ['red', 'bold']
+      assignClasses.push(cssClasses.bold); // classes = ['red', 'bold']
     }
     if (this.state.persons.length <=0) {
-      classes.push(cssClasses.underline); // classes = ['red', 'bold', 'underline']
+      assignClasses.push(cssClasses.underline); // classes = ['red', 'bold', 'underline']
     }  
 
     return (
       <div className={cssClasses.App}>
-        <p className = {classes.join(' ')}>This is working!</p>
+        <p className = {assignClasses.join(' ')}>This is working!</p>
         <button 
           style = {style}
           onClick = {this.togglePersonsHandler}>
