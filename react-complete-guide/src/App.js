@@ -84,6 +84,8 @@ class App extends Component {
       case 0:
         classes.push('red bold underline'); //classes = ['red', 'bold', 'underline']
         break;
+      default:
+        break;
     }
     
 
