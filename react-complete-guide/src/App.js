@@ -2,90 +2,101 @@ import React, { Component } from 'react';
 import './App.css';
 import Person from "./Person/Person.js"
 
+
 class App extends Component {
   state = {
     persons: [
-      {name:"Ladan", age: 45 },
-      {name:"Armin", age: 42 },
-      {name:"Laleh", age: 37 },
-      {name:"Ramin", age: 35 },
+      {id : "123123", name:"Ladan", age: 45 },
+      {id : "1231", name:"Armin", age: 42 },
+      {id : "23123", name:"Laleh", age: 37 },
+      {id : "1123", name:"Ramin", age: 35 },
     ],
+
     otherProperty: "other value",
     showPersons : false
   }
-  
-  changeHandler = (newName) =>{ // by the clicking this button, the event change the DOM and then re-render the page.
-    // console.log("was clicked")
-    // DONOT DO THIS : this.state.persons[0].name = "LOLO"
-    this.setState({ // we just change the persons property setState is the method of the Component
-      persons: [
-        {name: newName, age: 45 },
-        {name:"Armin", age: 42 },
-        {name:"Laleh", age: 37 },
-        {name:"Ramin_Old", age: 40 },
-      ]
-    })
-  };
+  deletePersonHandler = (personIndex) => {
+    // const persons = this.state.persons----------> not a good idea, cause array is a reference type and anyc hange would be on a original array
+    ///const persons = this.state.persons.slice(); ------------> //slice without  any arguments just create a copy of the element. 
+    // So it is a better way to write a code
+    // The other method is using the ... methods
 
-  namedChangedHandler = (event) => {
-    this.setState({ // we just change the persons property setState is the method of the Component
-      persons: [
-        {name: "Ladan", age: 45 },
-        {name:"Armin", age: 42 },
-        {name:"Laleh", age: 37 },
-        {name: event.target.value, age: 40 },
-      ]
-    })
+    let persons = [...this.state.persons]
+    persons.splice(personIndex, 1)              
+    this.setState({persons : persons})          
+  }
 
+  nameChangedHandler = (event, id) => {
+    const personIndex = this.state.persons.findIndex(p => {
+      return p.id === id;
+    });
+    
+    const person = {...this.state.persons[personIndex]}
+    person.name = event.target.value;
+    const persons = [...this.state.persons];
+    persons[personIndex] = person;
+    
+    this.setState({persons : persons})
   }
 
   togglePersonsHandler = () => {
     const doesShow = this.state.showPersons;
     this.setState({showPersons : !doesShow});
+    //console.log(this.state.persons[0])
 
   }
 
   render() {
     const style ={ //inline style, we used it in the button style, or add custome css in the App.css
-      backgroundColor : "white",
+      backgroundColor : "green",
+      color : "white",
       font : "tahoma",
-      border : '1.8px solid orange',
+      border : '1.8px solid green',
       padding : '6px',
       cursor : 'pointer'
     };
 
+    let persons = null; // prefered way of outputing the conditional content.
+    if (this.state.showPersons) {
+      persons = (
+        <div >
+          {this.state.persons.map((person, index) => {
+            return <Person 
+              name    = {person.name} 
+              age     = {person.age}
+              click   = {() => this.deletePersonHandler(index)}
+              changed = {(event) => this.nameChangedHandler(event, person.id)}
+              key     = {person.id}  />
+          })}
+        </div>
+      );
+      style.backgroundColor = "#007bff";
+    }
+
+    const classes = [];
+    switch(this.state.persons.length) {
+      case 2:
+        classes.push('red'); //classes = ['red']
+        break;
+      case 1:
+        classes.push('red bold'); //classes = ['red', 'bold']
+        break;
+      case 0:
+        classes.push('red bold underline'); //classes = ['red', 'bold', 'underline']
+        break;
+    }
+    
+
     return (
       <div className="App">
-          <button 
-            style = {style}
-            onClick = {this.togglePersonsHandler}>
-            change
-          </button>
-          {
-            this.state.showPersons === true ? 
-              <div >
-                <Person // must have Upper case otherwise the react confused with the html tag element. so Div is also acceptable
-                  name = {this.state.persons[0].name} 
-                  age  = {this.state.persons[0].age}/> 
-                    
-                <Person // click is the reference to the Person.js, that. we defined the element there but handle the event here via binding the event.
-                  name  = {this.state.persons[1].name} 
-                  age   = {this.state.persons[1].age}
-                  click = {this.changeHandler.bind(this, 'Ladan')}/>
-
-                <Person 
-                  name = {this.state.persons[2].name} 
-                  age  = {this.state.persons[2].age}/> 
-                <Person 
-                  name = {this.state.persons[3].name} 
-                  age  = {this.state.persons[3].age}
-                  changed = {this.namedChangedHandler}/>
-              
-              </div> 
-            :null
-          }     
-      </div>
-      // React.createElement("div", {className : 'App-header'}, React.createElement("h1", null, "Does this work now?"))
+        <p className = {classes.join(' ')}>This is working!</p>
+        <button 
+          style = {style}
+          onClick = {this.togglePersonsHandler}>
+          change
+        </button>
+        {persons}
+      </div>    // React.createElement("div", {className : 'App-header'}, React.createElement("h1", null, "Does this work now?"))
     );
   }
 }
